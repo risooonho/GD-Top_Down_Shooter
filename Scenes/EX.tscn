@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/LookAt.gd" type="Script" id=2]
+
+[node name="EX" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 474.238, 319.114 )
+texture = ExtResource( 1 )
+script/script = ExtResource( 2 )
+mode = 0
+
+

@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Scripts/PlayerMechanics.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31.8161, 31.1623 )
+
+[node name="Player" type="KinematicBody2D"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="HoldPlr" type="Node2D" parent="."]
+
+[node name="BasePlr" type="KinematicBody2D" parent="HoldPlr"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 3.07692, 0, 0, 2.61538, 0, -3 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+MOTION_SPEED = 140
+
+[node name="Collision" type="CollisionShape2D" parent="HoldPlr/BasePlr"]
+
+transform/pos = Vector2( 0, -3 )
+transform/scale = Vector2( 3.07692, 2.61538 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Camera2D" type="Camera2D" parent="HoldPlr/BasePlr"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="RayCast2D" type="RayCast2D" parent="HoldPlr/BasePlr"]
+
+enabled = false
+cast_to = Vector2( 0, 50 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ExPlr" type="Sprite" parent="HoldPlr/BasePlr"]
+
+texture = ExtResource( 2 )
+
+[node name="Gun" type="Sprite" parent="HoldPlr/BasePlr"]
+
+transform/pos = Vector2( 41.9408, 3.12489 )
+transform/rot = 79.2208
+transform/scale = Vector2( 0.697459, 0.499049 )
+texture = ExtResource( 2 )
+
+[node name="GunPos" type="Position2D" parent="HoldPlr/BasePlr/Gun"]
+
+transform/pos = Vector2( -5.3097, 33.6969 )
+transform/rot = -83.463
+
+[node name="FloorEXP" type="Sprite" parent="."]
+
+transform/pos = Vector2( 335.814, -69.993 )
+transform/rot = -174.509
+transform/scale = Vector2( 4.31339, -2.0755 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FloorEXP"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorEXP/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Crosshair" type="Sprite" parent="."]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Crosshair"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 16.0
+margin/bottom = 16.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+
+[node name="BulletPar" type="Node2D" parent="."]
+
+transform/pos = Vector2( 57.7679, 9.90793 )
+transform/rot = 79.2208
+transform/scale = Vector2( 0.697459, 0.499049 )
+
+
