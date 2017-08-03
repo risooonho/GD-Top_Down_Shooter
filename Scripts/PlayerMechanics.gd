@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var MOTION_SPEED = 140
+export var SPRINT_SPEED = 60
 const MAX_SPEED = 240
 
 var offset 
@@ -61,7 +62,11 @@ func _fixed_process(delta):
 		RayNode.set_rotd(90)
 	var firing = Input.is_action_pressed("fire")
 	
-	motion = motion.normalized()*MOTION_SPEED*delta
+	if Input.is_action_pressed("sprint"):
+	    motion = motion.normalized()*(MOTION_SPEED + SPRINT_SPEED)*delta
+	else:
+		motion = motion.normalized()*MOTION_SPEED*delta
+	
 	move(motion)
 	
 	
@@ -71,10 +76,10 @@ func _fixed_process(delta):
 	if (firing and has_shot == false):
 		var shot = preload("res://Scenes/Bullet.tscn").instance()
 		shot.set_pos(get_node("Gun/GunPos").get_global_pos())
-		get_node("/root/Player/BulletPar").add_child(shot)
+		get_node("/root/World/BulletPar").add_child(shot)
 		var shot = preload("res://Scenes/Bullet.tscn").instance()
 		shot.set_pos(get_node("Gun/GunPos").get_global_pos())
-		get_node("/root/Player/BulletPar").add_child(shot)
+		get_node("/root/World/BulletPar").add_child(shot)
 		
 		
 		
@@ -88,7 +93,7 @@ func _fixed_process(delta):
 	relative_mouse_pos = get_viewport().get_mouse_pos() * get_node("Camera2D").get_zoom() + offset # And add it to the mouse position
 		
 	get_node("Gun").look_at(relative_mouse_pos)
-	get_node("/root/Player/Crosshair").set_pos(relative_mouse_pos)
+	get_node("/root/World/Crosshair").set_pos(relative_mouse_pos)
 		
 		
 		

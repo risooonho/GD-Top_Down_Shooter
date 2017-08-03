@@ -13,7 +13,7 @@ extents = Vector2( 10, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 31.8161, 31.1623 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="World" type="KinematicBody2D"]
 
 input/pickable = false
 collision/layers = 1
@@ -21,6 +21,8 @@ collision/mask = 1
 collision/margin = 0.08
 
 [node name="HoldPlr" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="BasePlr" type="KinematicBody2D" parent="HoldPlr"]
 
@@ -33,6 +35,7 @@ collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 MOTION_SPEED = 140
+SPRINT_SPEED = 60
 
 [node name="Collision" type="CollisionShape2D" parent="HoldPlr/BasePlr"]
 
@@ -86,6 +89,7 @@ transform/rot = -83.463
 
 [node name="FloorEXP" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 335.814, -69.993 )
 transform/rot = -174.509
 transform/scale = Vector2( 4.31339, -2.0755 )
