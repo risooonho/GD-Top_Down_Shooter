@@ -22,8 +22,6 @@ collision/margin = 0.08
 
 [node name="PlrPar" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="BasePlr" type="KinematicBody2D" parent="PlrPar"]
 
 input/pickable = false
@@ -77,6 +75,7 @@ texture = ExtResource( 2 )
 
 [node name="Gun" type="Sprite" parent="PlrPar/BasePlr"]
 
+editor/display_folded = true
 transform/pos = Vector2( 41.9408, 3.12489 )
 transform/rot = 79.2208
 transform/scale = Vector2( 0.697459, 0.499049 )
