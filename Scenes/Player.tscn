@@ -20,11 +20,11 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 
-[node name="HoldPlr" type="Node2D" parent="."]
+[node name="PlrPar" type="Node2D" parent="."]
 
 editor/display_folded = true
 
-[node name="BasePlr" type="KinematicBody2D" parent="HoldPlr"]
+[node name="BasePlr" type="KinematicBody2D" parent="PlrPar"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -37,7 +37,7 @@ script/script = ExtResource( 1 )
 MOTION_SPEED = 140
 SPRINT_SPEED = 60
 
-[node name="Collision" type="CollisionShape2D" parent="HoldPlr/BasePlr"]
+[node name="Collision" type="CollisionShape2D" parent="PlrPar/BasePlr"]
 
 transform/pos = Vector2( 0, -3 )
 transform/scale = Vector2( 3.07692, 2.61538 )
@@ -45,7 +45,7 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Camera2D" type="Camera2D" parent="HoldPlr/BasePlr"]
+[node name="Camera2D" type="Camera2D" parent="PlrPar/BasePlr"]
 
 anchor_mode = 1
 rotating = false
@@ -64,25 +64,25 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
-[node name="RayCast2D" type="RayCast2D" parent="HoldPlr/BasePlr"]
+[node name="RayCast2D" type="RayCast2D" parent="PlrPar/BasePlr"]
 
 enabled = false
 cast_to = Vector2( 0, 50 )
 layer_mask = 1
 type_mask = 15
 
-[node name="ExPlr" type="Sprite" parent="HoldPlr/BasePlr"]
+[node name="ExPlr" type="Sprite" parent="PlrPar/BasePlr"]
 
 texture = ExtResource( 2 )
 
-[node name="Gun" type="Sprite" parent="HoldPlr/BasePlr"]
+[node name="Gun" type="Sprite" parent="PlrPar/BasePlr"]
 
 transform/pos = Vector2( 41.9408, 3.12489 )
 transform/rot = 79.2208
 transform/scale = Vector2( 0.697459, 0.499049 )
 texture = ExtResource( 2 )
 
-[node name="GunPos" type="Position2D" parent="HoldPlr/BasePlr/Gun"]
+[node name="GunPos" type="Position2D" parent="PlrPar/BasePlr/Gun"]
 
 transform/pos = Vector2( -5.3097, 33.6969 )
 transform/rot = -83.463
@@ -113,37 +113,5 @@ bounce = 0.0
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
-
-[node name="Crosshair" type="Sprite" parent="."]
-
-editor/display_folded = true
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="Crosshair"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 16.0
-margin/bottom = 16.0
-range/min = 0.0
-range/max = 100.0
-range/step = 1.0
-range/page = 0.0
-range/value = 1.0
-range/exp_edit = false
-range/rounded = false
-percent/visible = false
-
-[node name="BulletPar" type="Node2D" parent="."]
-
-transform/pos = Vector2( 57.7679, 9.90793 )
-transform/rot = 79.2208
-transform/scale = Vector2( 0.697459, 0.499049 )
 
 
