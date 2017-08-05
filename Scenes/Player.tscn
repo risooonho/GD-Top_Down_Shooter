@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/PlayerMechanics.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,11 +7,6 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 31.8161, 31.1623 )
 
 [node name="World" type="KinematicBody2D"]
 
@@ -75,7 +70,6 @@ texture = ExtResource( 2 )
 
 [node name="Gun" type="Sprite" parent="PlrPar/BasePlr"]
 
-editor/display_folded = true
 transform/pos = Vector2( 41.9408, 3.12489 )
 transform/rot = 79.2208
 transform/scale = Vector2( 0.697459, 0.499049 )
@@ -83,34 +77,7 @@ texture = ExtResource( 2 )
 
 [node name="GunPos" type="Position2D" parent="PlrPar/BasePlr/Gun"]
 
-transform/pos = Vector2( -5.3097, 33.6969 )
-transform/rot = -83.463
-
-[node name="FloorEXP" type="Sprite" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 335.814, -69.993 )
-transform/rot = -174.509
-transform/scale = Vector2( 4.31339, -2.0755 )
-texture = ExtResource( 2 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="FloorEXP"]
-
-input/pickable = false
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorEXP/StaticBody2D"]
-
-shape = SubResource( 2 )
-trigger = false
-_update_shape_index = 0
+transform/pos = Vector2( -18.6487, 24.8152 )
+transform/rot = -265.546
 
 

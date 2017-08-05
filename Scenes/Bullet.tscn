@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://Scripts/bulletR.gd" type="Script" id=1]
-[ext_resource path="res://Art/Images/General/crosshairEXP.png" type="Texture" id=2]
-
+[ext_resource path="res://Art/Images/General/Shot.png" type="Texture" id=2]
 
 [node name="Bullet" type="Node2D"]
 
-transform/pos = Vector2( -477.827, -4.52202 )
+transform/pos = Vector2( 31.9059, 32.8145 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shot" type="Area2D" parent="."]
 
