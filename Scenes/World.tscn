@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Art/Images/General/godot.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -62,7 +62,6 @@ percent/visible = true
 
 [node name="EnemyEXP" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( -308.217, -53.2945 )
 transform/scale = Vector2( 4.28567, 2.58184 )
 __meta__ = {
