@@ -1,14 +1,30 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Art/Images/General/godot.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/AiEn.gd" type="Script" id=1]
+[ext_resource path="res://Art/Images/General/Characters/En_1.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 31.9198, 31.908 )
+radius = 130.943
 
-[node name="Enemy" type="Area2D"]
+[node name="Enemy" type="KinematicBody2D"]
+
+transform/pos = Vector2( -1.50732, 0 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="BaseEnm" type="KinematicBody2D" parent="."]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+
+[node name="HitArea" type="Area2D" parent="BaseEnm"]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
@@ -18,16 +34,16 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 1 )
 
-[node name="EnemyEXP" type="Sprite" parent="."]
-
-texture = ExtResource( 2 )
-
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Area" type="CollisionShape2D" parent="BaseEnm/HitArea"]
 
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="EnemySpt" type="Sprite" parent="BaseEnm"]
+
+transform/pos = Vector2( 0.387421, -2.13083 )
+texture = ExtResource( 2 )
 
 

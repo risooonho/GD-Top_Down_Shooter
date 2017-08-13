@@ -1,16 +1,37 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/PlayerMechanics.gd" type="Script" id=1]
-[ext_resource path="res://Art/Images/General/godot.png" type="Texture" id=2]
+[ext_resource path="res://Art/Images/General/Characters/D_U.png" type="Texture" id=2]
+[ext_resource path="res://Art/Images/General/Characters/D_U_1.png" type="Texture" id=3]
+[ext_resource path="res://Art/Images/General/Characters/D_U_2.png" type="Texture" id=4]
+[ext_resource path="res://Art/Images/General/TestGun.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 4.79632, 10.3529 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk1",
+"speed": 5.0
+} ]
 
 [node name="World" type="KinematicBody2D"]
 
-editor/display_folded = true
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -31,7 +52,9 @@ script/script = ExtResource( 1 )
 MOTION_SPEED = 140
 SPRINT_SPEED = 60
 
-[node name="Collision" type="CollisionShape2D" parent="PlrPar/BasePlr"]
+[node name="Collision" type="CollisionShape2D" parent="PlrPar/BasePlr" groups=[
+"player",
+]]
 
 transform/pos = Vector2( 0, -3 )
 transform/scale = Vector2( 3.07692, 2.61538 )
@@ -65,20 +88,25 @@ cast_to = Vector2( 0, 50 )
 layer_mask = 1
 type_mask = 15
 
-[node name="ExPlr" type="Sprite" parent="PlrPar/BasePlr"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="PlrPar/BasePlr"]
 
-texture = ExtResource( 2 )
+transform/pos = Vector2( 0.614234, -3.49538 )
+transform/scale = Vector2( 1.62902, 1.74759 )
+frames = SubResource( 2 )
+animation = "idle"
 
 [node name="Gun" type="Sprite" parent="PlrPar/BasePlr"]
 
-transform/pos = Vector2( 41.9408, 3.12489 )
-transform/rot = 79.2208
-transform/scale = Vector2( 0.697459, 0.499049 )
-texture = ExtResource( 2 )
+editor/display_folded = true
+transform/pos = Vector2( 1.89151, 4.09675 )
+transform/rot = -145.612
+transform/scale = Vector2( 1.23412, 0.79928 )
+texture = ExtResource( 5 )
 
 [node name="GunPos" type="Position2D" parent="PlrPar/BasePlr/Gun"]
 
-transform/pos = Vector2( -18.6487, 24.8152 )
-transform/rot = -265.546
+transform/pos = Vector2( -7.50593, -8.93167 )
+transform/rot = -27.674
+transform/scale = Vector2( 0.16017, 0.2052 )
 
 

@@ -4,12 +4,16 @@ export var MOTION_SPEED = 140
 export var SPRINT_SPEED = 60
 
 const MAX_SPEED = 240
+const IDLE_SPEED = 10
 
 var offset 
 var relative_mouse_pos 
 var RayNode 
 var ShotR
 var motion
+var playerAnim
+var anim = ""
+var animNew = ""
 
 var hasShot = false
 
@@ -24,6 +28,7 @@ func _fixed_process(delta):
 	offset = Vector2()
 	relative_mouse_pos = Vector2()
 	RayNode = get_node("RayCast2D")
+	playerAnim = get_node("AnimatedSprite")
 		
 		
 	#crosshair 
@@ -63,6 +68,32 @@ func _fixed_process(delta):
 		motion = motion.normalized()*MOTION_SPEED*delta
 		
 	move(motion)
+		
+	#Animations
+	if (motion.length() > IDLE_SPEED*0.09):
+		if Input.is_action_pressed("ui_up"):
+			anim = "walk2"
+		if Input.is_action_pressed("ui_down"):
+			anim = "walk1"
+		if Input.is_action_pressed("ui_right"):
+			anim = "walk1"
+		if Input.is_action_pressed("ui_left"):
+			anim = "walk2"
+			
+	else:
+		if (RayNode.get_rotd() == 180):
+			anim = "idle"
+		if (RayNode.get_rotd() == 0):
+			anim = "idle"
+		if (RayNode.get_rotd() == -90):
+			anim = "idle"
+		if (RayNode.get_rotd() == 90):
+			anim = "idle"
+	
+	if anim != animNew:
+		animNew = anim
+		playerAnim.play(anim)
+		
 		
 		
 	#Shooting here
