@@ -1,23 +1,33 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/bulletR.gd" type="Script" id=1]
 [ext_resource path="res://Art/Images/General/Shot.png" type="Texture" id=2]
 
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4.31165, 10.153 )
+
 [node name="Bullet" type="Node2D"]
 
-transform/pos = Vector2( 31.9059, 32.8145 )
-__meta__ = {
-"_edit_group_": true
-}
+transform/pos = Vector2( 32.4899, 32.2305 )
 
 [node name="Shot" type="Area2D" parent="."]
 
+transform/pos = Vector2( -12.6762, -8.37496 )
+transform/scale = Vector2( 0.640367, 0.729158 )
 input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 14.0155, 7.59171 )
+shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="shotSprt" type="Sprite" parent="Shot"]
 
@@ -26,9 +36,16 @@ texture = ExtResource( 2 )
 
 [node name="VisibilityNtfr" type="VisibilityNotifier2D" parent="Shot"]
 
-transform/pos = Vector2( 15.0564, 9.13446 )
-transform/scale = Vector2( 1, 0.552585 )
+transform/pos = Vector2( 13.9473, 6.92839 )
+transform/scale = Vector2( 0.350387, 1.00736 )
 rect = Rect2( -10, -10, 20, 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shot"]
+
+transform/pos = Vector2( 14.0155, 7.59171 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 [connection signal="exit_screen" from="Shot/VisibilityNtfr" to="Shot" method="_on_visibility_exit_screen"]
 
