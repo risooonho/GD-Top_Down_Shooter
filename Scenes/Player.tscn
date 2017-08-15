@@ -11,7 +11,6 @@ extents = Vector2( 6.56363, 12.5123 )
 
 [node name="World" type="KinematicBody2D"]
 
-editor/display_folded = true
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -19,11 +18,8 @@ collision/margin = 0.08
 
 [node name="PlrPar" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="BasePlr" type="KinematicBody2D" parent="PlrPar"]
 
-editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 3.07692, 0, 0, 2.61538, 2.04391, -5.04393 )
@@ -77,21 +73,20 @@ texture = ExtResource( 2 )
 
 [node name="Gun" type="Sprite" parent="PlrPar/BasePlr"]
 
-editor/display_folded = true
-transform/pos = Vector2( 1.19698, 8.30917 )
-transform/rot = 77.2
+transform/pos = Vector2( 2.10175, 6.84922 )
+transform/rot = 89.9335
 transform/scale = Vector2( 1.60271, 2.05585 )
 texture = ExtResource( 3 )
 centered = false
-offset = Vector2( -18, -12 )
+offset = Vector2( -26, -11 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="GunPos" type="Position2D" parent="PlrPar/BasePlr/Gun"]
 
-transform/pos = Vector2( 6.23578, 6.84993 )
+transform/pos = Vector2( -3.09825, 12.7828 )
 transform/rot = -265.546
-transform/scale = Vector2( 0.0348324, 0.0423731 )
+transform/scale = Vector2( 0.0461922, 0.0513787 )
 
 
