@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://Scripts/EnemyAIbsc.gd" type="Script" id=1]
+[ext_resource path="res://Art/Images/General/godot.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = Vector2Array( 942.199, 607.044, 405.911, 439.181, 407.019, 291.813, 624.193, 272.976, 685.135, 272.976, 1038.77, 551.089, 85.7266, -13.8761, 948.516, -13.8761, 686.243, 7.04806, 624.193, 9.26412, 349.401, 31.4248, 115.606, 32.5328, 347.185, 67.9899, 132.226, 294.029, 121.146, 69.0979, -5.42587, 550.186, -7.23086, 40.2739, 134.442, 441.397, 90.2391, 607.044, 1038.77, 39.3714 )
+polygons = [ IntArray( 0, 1, 2, 3, 4, 5 ), IntArray( 6, 7, 8, 9 ), IntArray( 6, 9, 10, 11 ), IntArray( 10, 9, 3, 2, 12 ), IntArray( 12, 2, 13, 14 ), IntArray( 15, 16, 6, 11, 14, 13, 17, 18 ), IntArray( 0, 18, 17, 1 ), IntArray( 4, 8, 7, 19, 5 ) ]
+outlines = [ Vector2Array( -7.23086, 40.2739, 85.7266, -13.8761, 948.516, -13.8761, 1038.77, 39.3714, 1038.77, 551.089, 942.199, 607.044, 90.2391, 607.044, -5.42587, 550.186 ), Vector2Array( 132.226, 294.029, 134.442, 441.397, 405.911, 439.181, 407.019, 291.813 ), Vector2Array( 624.193, 9.26412, 624.193, 272.976, 685.135, 272.976, 686.243, 7.04806 ), Vector2Array( 349.401, 31.4248, 115.606, 32.5328, 121.146, 69.0979, 347.185, 67.9899 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100.317, 99.0582 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 99.4424, 99.3212 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 99.0974, 96.7513 )
+
+[node name="Level" type="Node2D"]
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+script/script = ExtResource( 1 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+
+navpoly = SubResource( 1 )
+enabled = true
+
+[node name="Floor" type="Sprite" parent="Navigation2D"]
+
+transform/pos = Vector2( 516.792, 297.159 )
+transform/scale = Vector2( 16.377, 9.72293 )
+texture = ExtResource( 2 )
+
+[node name="Obstacle" type="Sprite" parent="Navigation2D"]
+
+editor/display_folded = true
+transform/pos = Vector2( 231.693, 50.3916 )
+transform/scale = Vector2( 1.14636, 0.177457 )
+texture = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Navigation2D/Obstacle"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Obstacle/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstacle 2" type="Sprite" parent="Navigation2D"]
+
+editor/display_folded = true
+transform/pos = Vector2( 656.233, 141.353 )
+transform/scale = Vector2( 0.314418, 1.33596 )
+texture = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Navigation2D/Obstacle 2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Obstacle 2/StaticBody2D"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstacle 3" type="Sprite" parent="Navigation2D"]
+
+editor/display_folded = true
+transform/pos = Vector2( 268.493, 367.924 )
+transform/scale = Vector2( 1.36014, 0.755816 )
+texture = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Navigation2D/Obstacle 3"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Obstacle 3/StaticBody2D"]
+
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+
