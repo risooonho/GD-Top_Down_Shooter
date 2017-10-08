@@ -14,10 +14,3 @@ func _ready():
 func _on_visibility_exit_screen():
 	queue_free()
 	
-
-
-
-
-	
-	
-	

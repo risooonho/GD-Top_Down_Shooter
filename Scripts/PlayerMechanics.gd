@@ -18,7 +18,6 @@ var hasShot = false
 func _ready():
 	set_fixed_process(true)
 	
-#onready variables 
 func _fixed_process(delta):
 	motion = Vector2()
 	offset = Vector2()
@@ -43,16 +42,16 @@ func _fixed_process(delta):
 		
 	#movement and rotation 
 	if Input.is_action_pressed("ui_up"):
-		motion += Vector2(0, -1)
+		motion += Vector2(0.01, -0.8677)
 		RayNode.set_rotd(180)
 	if Input.is_action_pressed("ui_down"):
-		motion += Vector2(0, 1)
+		motion += Vector2(0.02, 0.8466)
 		RayNode.set_rotd(0)
 	if Input.is_action_pressed("ui_right"):
-		motion += Vector2(1, 0)
+		motion += Vector2(0.8577, 0.01)
 		RayNode.set_rotd(-90)
 	if Input.is_action_pressed("ui_left"):
-		motion += Vector2(-1, 0)
+		motion += Vector2(-0.8466, 0.02)
 		RayNode.set_rotd(90)
 	var firing = Input.is_action_pressed("fire")
 		
@@ -74,5 +73,5 @@ func _fixed_process(delta):
 		get_node("/root/World/BulletPar").add_child(shot)
 		
 	#shot delay
-	#DO NOT CHANGE!!
+	#Buggy //need to change soon
 	hasShot = firing
